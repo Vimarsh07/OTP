@@ -11,15 +11,6 @@ import * as firebase from 'firebase';
 
 
 
-export class PhoneNumber{
-  country: string;
-  line: string;
-
-  get e164(){
-    const num = this.country + this.line
-    return '+${num}';
-  }
-}
 
 @Component({
   selector: 'login',
@@ -30,7 +21,7 @@ export class LoginComponent implements OnInit{
 
   verificationid: any;
   windowRef:any;
-  phone = new PhoneNumber()
+  phone:any;
   user:any;
 
 
@@ -47,10 +38,11 @@ export class LoginComponent implements OnInit{
 
   add1(){
     const appVerifier = this.windowRef.recaptchaVerifier;
-    const num = this.phone.e164;
+    let countrycode = "+91";
+    let num = countrycode+this.phone;
     
-    firebase.auth().signInWithPhoneNumber(num,appVerifier).then(result =>{
-      this.windowRef.confirmationResult = result;
+    firebase.auth().signInWithPhoneNumber(num,appVerifier).then((confirmationResult)=>{
+      this.windowRef.confirmationResult = confirmationResult;
     })
     .catch(error => console.log(error));
     }

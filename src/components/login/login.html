@@ -17,8 +17,8 @@
   <ion-label for="phone">
   Phone Number
   </ion-label><br>
-  <ion-input type="text"  [(ngModel)]="phone.country" class ="input" placeholder="91"> </ion-input>
-  <ion-input type="text"  [(ngModel)]="phone.line" class ="input" placeholder="91"> </ion-input>
+  
+  <ion-input type="text"  [(ngModel)]="phone" class ="input" placeholder="Number"> </ion-input>
 
 <div id = "recaptcha-container"></div>
 
@@ -26,7 +26,7 @@
   Send OTP
 </button>
 
-<div *ngIf="window.confirmationResult">
+<div *ngIf="windowRef.confirmationResult">
 
   <ion-label for="code">Enter OTP</ion-label><br>
   <ion-input type="text"  name ="code" [(ngModel)]="verificationid" class ="input" > </ion-input>
